@@ -1,0 +1,33 @@
+.row {
+  margin-bottom: mobile-vw(24px);
+
+  @include desktop {
+    margin-bottom: desktop-vw(24px);
+  }
+
+  i {
+    vertical-align: top;
+    font-style: italic;
+    font-size: mobile-vw(12px);
+
+    @include desktop {
+      font-size: desktop-vw(12px);
+    }
+  }
+
+  b {
+    font-weight: 700;
+  }
+}
+
+.item {
+  .row {
+    margin-bottom: 0;
+  }
+}
+
+.link {
+  &::before {
+    transform: scaleX(1) !important;
+  }
+}

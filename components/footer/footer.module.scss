@@ -1,0 +1,85 @@
+.container {
+  width: 100%;
+  position: relative;
+
+  .footer-image {
+    @include mobile {
+      margin-bottom: mobile-vw(24px);
+      position: relative;
+      aspect-ratio: 360 / 260;
+      width: 100%;
+      height: mobile-vw(260px);
+      margin-top: 100px;
+
+      &:before {
+        content: '';
+        position: absolute;
+        bottom: -1px;
+        width: 100%;
+        height: mobile-vw(190px);
+        background: linear-gradient(
+          180deg,
+          rgba(255, 255, 255, 0) 30%,
+          rgba(0, 0, 0, 1) 80%
+        );
+        z-index: 1;
+        pointer-events: none;
+      }
+    }
+  }
+}
+
+.footer {
+  padding: mobile-vw(24px) 0;
+  font-family: var(--font-secondary);
+  text-transform: uppercase;
+  width: 100%;
+
+  @include mobile {
+    row-gap: mobile-vw(48px);
+  }
+
+  @include desktop {
+    padding: desktop-vw(16px) 0 desktop-vw(24px) 0;
+  }
+
+  .column {
+    grid-column: span 2;
+
+    @include desktop {
+      &:nth-child(1) {
+        grid-column: span 2;
+      }
+      &:nth-child(2) {
+        grid-column: span 1;
+      }
+      &:nth-child(3) {
+        grid-column: span 1;
+      }
+      &:nth-child(4) {
+        grid-column: span 1;
+      }
+      &:nth-child(5) {
+        grid-column: span 2;
+      }
+      &:nth-child(6) {
+        text-align: end;
+        grid-column: span 1;
+      }
+    }
+
+    @include mobile {
+      &:last-child {
+        grid-column: span 4;
+      }
+    }
+
+    li + li {
+      margin-top: mobile-vw(16px);
+
+      @include desktop {
+        margin-top: desktop-vw(4px);
+      }
+    }
+  }
+}

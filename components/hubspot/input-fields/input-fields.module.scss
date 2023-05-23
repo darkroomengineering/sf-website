@@ -1,0 +1,206 @@
+.inputs-basic {
+  width: 100%;
+  background: transparent;
+  color: var(--theme-secondary);
+  border: 1px solid currentColor;
+  display: flex;
+  justify-content: space-between;
+  text-transform: uppercase;
+  -webkit-box-shadow: 0 0 0px 1000px transparent inset;
+  padding: mobile-vw(15px) mobile-vw(16px);
+  height: mobile-vw(48px);
+  border-radius: mobile-vw(10px);
+
+  @include desktop {
+    padding: desktop-vw(15px) desktop-vw(16px);
+    height: desktop-vw(48px);
+    border-radius: desktop-vw(10px);
+  }
+
+  &::placeholder {
+    font-size: mobile-vw(16px);
+    font-style: normal;
+    font-weight: 700;
+    line-height: 125%;
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+    color: var(--grey);
+
+    @include desktop {
+      line-height: 140%;
+      font-size: desktop-vw(16px);
+    }
+  }
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: mobile-vw(15px);
+  position: relative;
+  grid-column: span 2;
+
+  @include desktop {
+    margin-bottom: desktop-vw(24px);
+  }
+
+  .input {
+    @extend .inputs-basic;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  .label {
+    font-family: var(--font-secondary);
+    margin-bottom: mobile-vw(8px);
+
+    @include desktop {
+      margin-bottom: desktop-vw(8px);
+    }
+  }
+
+  .error {
+    position: absolute;
+    color: #eb5757;
+    margin-top: mobile-vw(72px);
+    font-size: mobile-vw(9px);
+
+    @include desktop {
+      font-size: desktop-vw(12px);
+      margin-top: desktop-vw(95px);
+    }
+  }
+
+  .input:not([value='']):invalid {
+    border: 1px solid var(--red);
+  }
+  .input:not([value='']):valid {
+    border: 1px solid var(--green);
+  }
+
+  // hacky stuff
+  @include desktop {
+    &:nth-child(1) {
+      grid-column: span 1;
+    }
+    &:nth-child(2) {
+      grid-column: span 1;
+    }
+    &:nth-child(6) {
+      grid-column: span 1;
+    }
+    &:nth-child(7) {
+      grid-column: span 1;
+    }
+    &:nth-child(8) {
+      grid-column: span 1;
+    }
+    &:nth-child(9) {
+      grid-column: span 1;
+    }
+  }
+}
+
+.textarea {
+  @extend .inputs-basic;
+  font-weight: 400;
+  text-transform: unset;
+  height: mobile-vw(177px);
+
+  @include desktop {
+    height: desktop-vw(177px);
+  }
+
+  &::placeholder {
+    font-size: mobile-vw(16px);
+    font-style: normal;
+    font-weight: 400;
+    line-height: 125%;
+    letter-spacing: 0.01em;
+    text-transform: capitalize;
+    color: var(--grey);
+
+    @include desktop {
+      line-height: 140%;
+      font-size: desktop-vw(16px);
+    }
+  }
+
+  &:not(:empty):invalid {
+    border: 1px solid var(--red);
+  }
+  &:not(:empty):valid {
+    border: 1px solid var(--green);
+  }
+}
+
+.multiple-checkboxes {
+  display: flex;
+  flex-wrap: wrap;
+  grid-column: span 2;
+  max-width: 100%;
+  margin-bottom: mobile-vw(15px);
+
+  @include desktop {
+    margin-bottom: desktop-vw(20px);
+  }
+
+  .label {
+    font-family: var(--font-secondary);
+    display: block;
+    width: 100%;
+    margin-bottom: mobile-vw(8px);
+
+    @include desktop {
+      margin-bottom: desktop-vw(8px);
+    }
+  }
+
+  .checkbox {
+    input {
+      position: absolute;
+      opacity: 0;
+      left: -9999px;
+    }
+
+    &:not(:last-child) {
+      margin-right: mobile-vw(8px);
+      margin-bottom: mobile-vw(8px);
+
+      @include desktop {
+        margin-right: desktop-vw(8px);
+        margin-bottom: desktop-vw(8px);
+      }
+    }
+
+    input:checked + span,
+    &:hover span {
+      color: var(--green);
+    }
+
+    span {
+      display: block;
+      text-transform: uppercase;
+      padding: mobile-vw(15px) mobile-vw(16px);
+      border-radius: mobile-vw(24px);
+      border: 1px solid;
+      transition: color 200ms ease-in-out, background-color 200ms ease-in-out;
+
+      @include desktop {
+        padding: desktop-vw(15px) desktop-vw(16px);
+        border-radius: desktop-vw(24px);
+      }
+
+      &:not(:last-child) {
+        margin-right: mobile-vw(8px);
+
+        @include desktop {
+          margin-right: desktop-vw(8px);
+        }
+      }
+    }
+  }
+}

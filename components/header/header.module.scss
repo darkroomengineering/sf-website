@@ -1,0 +1,99 @@
+.container {
+  width: 100%;
+  position: relative;
+
+  .top {
+    align-items: center;
+    padding-top: mobile-vw(16px);
+    padding-bottom: mobile-vw(24px);
+
+    @include desktop {
+      padding-top: desktop-vw(16px);
+      padding-bottom: desktop-vw(8px);
+    }
+
+    .eggs {
+      grid-column: span 2;
+
+      @include desktop {
+        grid-column: span 1;
+      }
+
+      .egg {
+        display: inline-block;
+        aspect-ratio: 1;
+        width: mobile-vw(24px);
+        transition: color 300ms var(--ease-out-expo);
+
+        @include desktop {
+          width: desktop-vw(24px);
+        }
+
+        + .egg {
+          margin-left: desktop-vw(9px);
+        }
+
+        @include hover {
+          &:hover {
+            color: var(--green);
+          }
+        }
+      }
+    }
+
+    .cta {
+      grid-column: 3/-1;
+      text-align: end;
+      margin-left: auto;
+
+      @include desktop {
+        grid-column: 8/-1;
+      }
+    }
+  }
+
+  .marquee {
+    grid-column: 5/8;
+    color: var(--grey);
+    text-transform: uppercase;
+
+    .principle {
+      font-weight: 700;
+
+      @include desktop {
+        transition: filter 300ms ease-in-out;
+        filter: blur(1.5px);
+      }
+
+      @include hover {
+        &:hover {
+          filter: blur(0);
+        }
+      }
+
+      .separator {
+        margin: 0 mobile-vw(16px);
+        @include desktop {
+          margin: 0 desktop-vw(16px);
+        }
+      }
+    }
+
+    @include mobile {
+      margin: mobile-vw(24px) 0;
+    }
+  }
+
+  .header {
+    width: 100%;
+
+    .title {
+      grid-column: 1/-1;
+      text-shadow: 0 0 10px;
+
+      @include mobile {
+        margin: mobile-vw(10px) 0;
+      }
+    }
+  }
+}

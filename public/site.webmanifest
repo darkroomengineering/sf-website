@@ -1,0 +1,25 @@
+{
+  "name": "Studio Freight",
+  "short_name": "SF",
+  "description": "A design studio built on principle. We grow brands by making them easy to understand and impossible to ignore. Our creative experts support with branding, art direction, strategy, web design, web development, packaging, copywriting, lettering, illustration, photography, murals, signage, video, and beyond.",
+  "icons": [
+    {
+      "src": "/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ],
+  "theme_color": "#4160ff",
+  "background_color": "#000000",
+  "start_url": "/",
+  "scope": ".",
+  "display": "standalone",
+  "orientation": "portrait"
+}

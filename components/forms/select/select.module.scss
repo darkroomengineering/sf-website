@@ -1,0 +1,121 @@
+.trigger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  line-height: 1;
+  background-color: transparent;
+  border: 1px solid var(--white);
+  color: var(--white);
+  width: 100%;
+  position: relative;
+  text-transform: uppercase;
+  padding: mobile-vw(15px) mobile-vw(16px);
+  height: mobile-vw(48px);
+  border-radius: mobile-vw(8px);
+
+  @include desktop {
+    padding: desktop-vw(15px) desktop-vw(16px);
+    height: desktop-vw(48px);
+    border-radius: desktop-vw(8px);
+  }
+
+  &[data-placeholder] {
+    font-size: mobile-vw(16px);
+    font-style: normal;
+    font-weight: 700;
+    line-height: 125%;
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+    color: var(--grey);
+
+    @include desktop {
+      line-height: 140%;
+      font-size: desktop-vw(16px);
+    }
+  }
+
+  &:not([data-placeholder]) {
+    border: 1px solid var(--green);
+  }
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--white);
+  width: mobile-vw(50px);
+  height: mobile-vw(32px);
+  margin: mobile-vw(-5px) mobile-vw(-10px);
+  border-top-right-radius: mobile-vw(5px);
+  border-bottom-right-radius: mobile-vw(5px);
+
+  @include desktop {
+    width: desktop-vw(50px);
+    height: desktop-vw(32px);
+    margin: desktop-vw(-5px) desktop-vw(-10px);
+    border-top-right-radius: desktop-vw(5px);
+    border-bottom-right-radius: desktop-vw(5px);
+  }
+
+  svg {
+    width: mobile-vw(16px);
+    height: mobile-vw(8px);
+    transition: transform 0.2s ease;
+
+    @include desktop {
+      width: desktop-vw(16px);
+      height: desktop-vw(8px);
+    }
+  }
+
+  &:not(.open) {
+    svg {
+      transform: rotate(180deg);
+    }
+  }
+}
+
+.content {
+  position: relative;
+  z-index: 3;
+  overflow: hidden;
+  background-color: var(--black);
+  border: 1px solid var(--white);
+  text-transform: uppercase;
+  border-radius: mobile-vw(5px);
+  width: calc(100% - mobile-vw(50px));
+  padding: mobile-vw(15px) 0;
+
+  @include desktop {
+    border-radius: desktop-vw(5px);
+    width: calc(100% - desktop-vw(50px));
+    padding: desktop-vw(15px) 0;
+  }
+}
+
+.item {
+  text-transform: uppercase;
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  position: relative;
+  user-select: none;
+  height: mobile-vw(31px);
+  padding: mobile-vw(15px) mobile-vw(16px);
+
+  @include desktop {
+    height: desktop-vw(31px);
+    padding: desktop-vw(15px) desktop-vw(16px);
+  }
+
+  &[data-disabled] {
+    opacity: 0.3;
+    pointer-events: none;
+  }
+  &[data-highlighted] {
+    outline: none;
+    background-color: var(--white);
+    color: var(--black);
+  }
+}

@@ -1,0 +1,78 @@
+// :root {
+//   --font: 'Neue Montreal';
+//   --font-secondary: 'Messina Sans Mono';
+//   --font-tertiary: 'GT Alpina';
+// }
+
+.h1 {
+  text-align: center;
+  font-size: mobile-vw(43px);
+  font-style: normal;
+  font-weight: 700;
+  line-height: 92%;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+
+  @include desktop {
+    font-size: desktop-vw(178px);
+  }
+}
+
+.p {
+  font-size: mobile-vw(16px);
+  font-style: normal;
+  font-weight: 400;
+  line-height: 125%;
+  letter-spacing: 0.01em;
+
+  @include desktop {
+    line-height: 140%;
+    font-size: desktop-vw(16px);
+  }
+}
+
+.p-s {
+  font-size: mobile-vw(12px);
+  font-style: normal;
+  font-weight: 400;
+  line-height: 125%;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+
+  @include desktop {
+    font-size: desktop-vw(12px);
+  }
+}
+
+.p-xs {
+  font-size: mobile-vw(8px);
+  font-style: normal;
+  font-weight: 400;
+  line-height: 125%;
+
+  @include desktop {
+    font-size: desktop-vw(12px);
+  }
+}
+
+//
+
+.text-uppercase {
+  text-transform: uppercase;
+}
+
+.text-start {
+  text-align: start;
+}
+
+.text-end {
+  text-align: end;
+}
+
+.text-muted {
+  color: var(--grey);
+}
+
+.text-bold {
+  font-weight: 700;
+}

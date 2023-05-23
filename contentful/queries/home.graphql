@@ -1,0 +1,112 @@
+#import "../fragments/link.graphql"
+#import "../fragments/image.graphql"
+
+query studioFreightEntryQuery($preview: Boolean!) {
+  studioFreight(id: "2Aj2bopjw3dWELYGPP1ciN", preview: $preview) {
+    sys {
+      id
+    }
+    principles
+    about {
+      json
+    }
+    phoneNumber
+    email
+  }
+}
+
+query footerEntryQuery($preview: Boolean!) {
+  footer(id: "79mFjxkAPeJr60vPYhCeDC", preview: $preview) {
+    sys {
+      id
+    }
+    linksCollection {
+      items {
+        ...Link
+      }
+    }
+  }
+}
+
+query contactEntryQuery($preview: Boolean!) {
+  contact(id: "4Jf4kYvhy8vgKraoM0oLQO", preview: $preview) {
+    sys {
+      id
+    }
+    description {
+      json
+    }
+    form
+    faqsCollection {
+      items {
+        title
+        content {
+          json
+        }
+      }
+    }
+    thankYouMessage {
+      json
+    }
+  }
+}
+
+query projectListEntryQuery($preview: Boolean!) {
+  projectList(id: "6nQzRceL1TxfIzIYatjR8T", preview: $preview) {
+    sys {
+      id
+    }
+    listCollection {
+      items {
+        sys {
+          id
+        }
+        name
+        industry
+        description
+        testimonial
+        assetsCollection(limit: 20) {
+          items {
+            imagesCollection(limit: 20) {
+              items {
+                url
+                title
+              }
+            }
+          }
+        }
+        services
+        stack
+        link
+      }
+    }
+  }
+}
+
+# query projectCollectionQuery($preview: Boolean!) {
+#   projectCollection(preview: $preview) {
+#     items {
+#       sys {
+#         id
+#       }
+#       name
+#       industry
+#       description
+#       testimonial
+#       assetsCollection(limit: 20) {
+#         items {
+#           imagesCollection(limit: 20) {
+#             items {
+#               url
+#               title
+#             }
+#           }
+#         }
+#       }
+#       services
+#       stack
+#       link
+#       publishedDate
+#     }
+#   }
+# }

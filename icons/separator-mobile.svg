@@ -1,0 +1,7 @@
+<svg viewBox="0 0 343 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M6 0V12" stroke="var(--grey)"/>
+<path d="M12 6L-3.57628e-07 6" stroke="var(--grey)"/>
+<path d="M20 6L323 5.99997" stroke="var(--grey)"/>
+<path d="M337 0V12" stroke="var(--grey)"/>
+<path d="M343 6L331 6" stroke="var(--grey)"/>
+</svg>

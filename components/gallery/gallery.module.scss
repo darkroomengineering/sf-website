@@ -1,0 +1,43 @@
+.gallery {
+  position: fixed;
+  inset: 0;
+  z-index: 3;
+  height: 100%;
+  padding: desktop-vh(110px) desktop-vw(201px);
+  display: flex;
+  transition: opacity 500ms var(--ease-out-expo),
+    transform 500ms var(--ease-out-expo);
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-color: var(--black);
+    opacity: 0.8;
+    pointer-events: none;
+  }
+
+  .scroller {
+    border-top-right-radius: desktop-vw(8px);
+    border-top-left-radius: desktop-vw(8px);
+  }
+
+  .close {
+    position: absolute;
+    left: desktop-vw(154px);
+    top: desktop-vh(110px);
+    width: desktop-vw(24px);
+    height: desktop-vw(24px);
+
+    .text {
+      display: block;
+      transform: translateY(180%) rotate(-90deg);
+    }
+  }
+
+  &:not(.visible) {
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(2%);
+  }
+}

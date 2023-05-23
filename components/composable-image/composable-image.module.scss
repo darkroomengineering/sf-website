@@ -1,0 +1,39 @@
+.images {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  overflow: hidden;
+  grid-gap: mobile-vw(8px);
+
+  @include desktop {
+    grid-gap: desktop-vw(8px);
+    margin-bottom: desktop-vw(8px);
+  }
+
+  .image {
+    grid-column: span 1;
+    height: mobile-vw(238px);
+    width: auto;
+    aspect-ratio: var(--width) / var(--height);
+    border-radius: mobile-vw(8px);
+
+    @include desktop {
+      height: desktop-vw(403px);
+      border-radius: desktop-vw(8px);
+    }
+
+    &:only-child {
+      grid-column: span 2;
+    }
+
+    &.large {
+      @include desktop {
+        height: desktop-vw(611px);
+      }
+    }
+    &.small {
+      @include mobile {
+        height: mobile-vw(211px);
+      }
+    }
+  }
+}
