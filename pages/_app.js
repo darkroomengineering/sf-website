@@ -6,9 +6,17 @@ import { ScrollTrigger } from 'gsap/dist/ScrollTrigger'
 import { GTM_ID } from 'lib/analytics'
 import { useStore } from 'lib/store'
 import { ProjectProvider, RafDriverProvider } from 'lib/theatre'
+import dynamic from 'next/dynamic'
 import Script from 'next/script'
 import { useEffect } from 'react'
 import 'styles/global.scss'
+
+const Noise = dynamic(
+  () => import('components/noise').then(({ Noise }) => Noise),
+  {
+    ssr: false,
+  }
+)
 
 if (typeof window !== 'undefined') {
   gsap.registerPlugin(ScrollTrigger)
@@ -40,7 +48,7 @@ function MyApp({ Component, pageProps }) {
       document.documentElement.style.setProperty('overflow', 'hidden')
     }
   }, [lenis, overflow])
-  
+
   return (
     <>
       {/* Google Tag Manager - Global base code */}
@@ -65,6 +73,7 @@ function MyApp({ Component, pageProps }) {
       )}
       {/* <PageTransition /> */}
       <RealViewport />
+      <Noise />
       <ProjectProvider
         id="Satus"
         config="/config/Satus-2023-04-17T12_55_21.json"
