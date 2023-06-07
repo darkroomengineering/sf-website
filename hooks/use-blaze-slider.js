@@ -1,11 +1,11 @@
 import BlazeSlider from 'blaze-slider'
-import { useEffect, useRef } from 'react'
+import React from 'react'
 
 export function useBlazeSlider(config) {
-  const sliderRef = useRef()
-  const elRef = useRef()
+  const sliderRef = React.useRef()
+  const elRef = React.useRef()
 
-  useEffect(() => {
+  React.useEffect(() => {
     // if not already initialized
     if (!sliderRef.current) {
       sliderRef.current = new BlazeSlider(elRef.current, config)

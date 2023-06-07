@@ -61,7 +61,7 @@ export function Layout({
         <Cursor />
         <Scrollbar />
         <Header
-          title="STUDIO FREIGHT"
+          
           principles={principles}
           contact={contactData}
         />

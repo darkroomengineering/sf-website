@@ -1,6 +1,7 @@
 import { RealViewport } from '@studio-freight/compono'
 import { useLenis } from '@studio-freight/react-lenis'
 import Tempus from '@studio-freight/tempus'
+import 'blaze-slider/dist/blaze.css'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger'
 import { GTM_ID } from 'lib/analytics'

@@ -30,7 +30,11 @@
         }
 
         + .egg {
-          margin-left: desktop-vw(9px);
+          margin-left: mobile-vw(9px);
+
+          @include desktop {
+            margin-left: desktop-vw(9px);
+          }
         }
 
         @include hover {
@@ -90,6 +94,7 @@
     .title {
       grid-column: 1/-1;
       text-shadow: 0 0 10px;
+      margin: desktop-vw(14px) 0;
 
       @include mobile {
         margin: mobile-vw(10px) 0;

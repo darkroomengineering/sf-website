@@ -9,6 +9,10 @@ import dynamic from 'next/dynamic'
 import shallow from 'zustand/shallow'
 import s from './header.module.scss'
 
+const SFLogo = dynamic(() => import('icons/sf-logo.svg'), { ssr: false })
+const SFLogoMobile = dynamic(() => import('icons/sf-logo-mobile.svg'), {
+  ssr: false,
+})
 const SFDR = dynamic(() => import('icons/sfdr.svg'), { ssr: false })
 const Stard = dynamic(() => import('icons/stard.svg'), { ssr: false })
 const Monogram = dynamic(() => import('icons/sf-monogram.svg'), { ssr: false })
@@ -16,7 +20,7 @@ const StarDuotone = dynamic(() => import('icons/star-duotone.svg'), {
   ssr: false,
 })
 
-export const Header = ({ title, principles = [], contact }) => {
+export const Header = ({ principles = [], contact }) => {
   const isMobile = useMediaQuery('(max-width: 800px)')
   // const visible = usePageAppear()
   const [contactIsOpen, setContactIsOpen] = useStore(
@@ -79,7 +83,11 @@ export const Header = ({ title, principles = [], contact }) => {
       </div>
       <Separator />
       <div className={cn(s.header, 'layout-grid')}>
-        <h1 className={cn('h1', s.title)}>{title}</h1>
+        {isMobile === true ? (
+          <SFLogoMobile className={s.title} />
+        ) : (
+          <SFLogo className={s.title} />
+        )}
       </div>
       <Separator />
 
