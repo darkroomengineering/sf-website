@@ -119,11 +119,18 @@
       position: relative;
 
       .modal-trigger {
-        aspect-ratio: 1;
-        width: desktop-vw(24px);
+        display: flex;
+        align-items: center;
         position: absolute;
         bottom: 0;
         z-index: 1;
+
+        svg {
+          aspect-ratio: 1;
+          flex-shrink: 0;
+          width: desktop-vw(24px);
+          margin-right: desktop-vw(10px);
+        }
       }
 
       &:not(.visible) {

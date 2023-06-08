@@ -146,7 +146,7 @@ export default function Home({ studioFreight, footer, contact, projects }) {
               <div className={s['details-content']}>
                 <div className={cn(s.images, !showInfoModal && s.visible)}>
                   <button
-                    className={s['modal-trigger']}
+                    className={cn(s['modal-trigger'], 'p-s')}
                     onClick={() => setGalleryVisible(true)}
                   >
                     <svg
@@ -159,6 +159,7 @@ export default function Home({ studioFreight, footer, contact, projects }) {
                         d="M11 1H1v10M15 1h10v10M15 25h10V15M11 25H1V15m12-8v12m6-6H7"
                       />
                     </svg>
+                    Enlarge
                   </button>
                   <ScrollableBox reset={showInfoModal || resetScroll}>
                     {selectedProject?.assetsCollection?.items.map(
