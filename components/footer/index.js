@@ -97,8 +97,8 @@ export function Footer({ className, style, links, studioInfo }) {
       {isMobile === true && (
         <section className={s['footer-image']}>
           <Image
-            src={'/mobile-temp-images/hamo-banner.png'}
-            alt={'hamo placeholder'}
+            src="/mobile-temp-images/footer.png"
+            alt="studio freight"
             fill
             className={s.image}
           />

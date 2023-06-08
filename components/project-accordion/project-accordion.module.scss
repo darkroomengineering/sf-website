@@ -18,11 +18,17 @@
 
     .trigger {
       display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
       align-items: center;
       text-transform: uppercase;
       width: 100%;
       user-select: none;
+
+      .category {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
 
       span {
         margin: auto 0;
