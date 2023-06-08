@@ -4,7 +4,7 @@ import { ComposableImage } from 'components/composable-image'
 import { ScrollableBox } from 'components/scrollable-box'
 import { useStore } from 'lib/store'
 import { useEffect, useRef } from 'react'
-import shallow from 'zustand/shallow'
+import { shallow } from 'zustand/shallow'
 import s from './gallery.module.scss'
 
 export function Gallery() {

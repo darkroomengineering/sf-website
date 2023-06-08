@@ -18,7 +18,7 @@ import { getForm } from 'lib/hubspot'
 import { useStore } from 'lib/store'
 import dynamic from 'next/dynamic'
 import { useEffect, useState } from 'react'
-import shallow from 'zustand/shallow'
+import { shallow } from 'zustand/shallow'
 import s from './home.module.scss'
 
 const Arrow = dynamic(() => import('icons/arrow.svg'), { ssr: false })
@@ -165,7 +165,10 @@ export default function Home({ studioFreight, footer, contact, projects }) {
                     {selectedProject?.assetsCollection?.items.map(
                       (asset, i) => (
                         <button key={i} onClick={() => setGalleryVisible(true)}>
-                          <ComposableImage sources={asset.imagesCollection} />
+                          <ComposableImage
+                            sources={asset.imagesCollection}
+                            priority={i === 0}
+                          />
                         </button>
                       )
                     )}

@@ -8,6 +8,7 @@ export function ComposableImage({
   height = 403,
   large = false,
   small = false,
+  priority = false,
 }) {
   const amount = sources.items.length
   return (
@@ -21,6 +22,7 @@ export function ComposableImage({
           height={height}
           className={cn(s.image, large && s.large, small && s.small)}
           style={{ '--height': height, '--width': width / amount }}
+          priority={priority}
         />
       ))}
     </div>

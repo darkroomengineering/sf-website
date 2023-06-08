@@ -6,7 +6,7 @@ import { Separator } from 'components/separator'
 import { pad } from 'lib/maths'
 import { useStore } from 'lib/store'
 import dynamic from 'next/dynamic'
-import shallow from 'zustand/shallow'
+import { shallow } from 'zustand/shallow'
 import s from './header.module.scss'
 
 const SFLogo = dynamic(() => import('icons/sf-logo.svg'), { ssr: false })

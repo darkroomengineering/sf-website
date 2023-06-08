@@ -105,6 +105,14 @@ const nextConfig = {
 
     config.plugins.push(new DuplicatePackageCheckerPlugin())
 
+    // config.resolve.alias = {
+    //   ...config.resolve.alias,
+    //   '@studio-freight/hamo': path.resolve(
+    //     __dirname,
+    //     'node_modules/@studio-freight/hamo'
+    //   ),
+    // }
+
     return config
   },
   headers: async () => {

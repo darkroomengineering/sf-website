@@ -10,7 +10,7 @@ import { slugify } from 'lib/slugify'
 import { useStore } from 'lib/store'
 import { useRouter } from 'next/router'
 import { useEffect, useRef } from 'react'
-import shallow from 'zustand/shallow'
+import { shallow } from 'zustand/shallow'
 import s from './contact-form.module.scss'
 
 export function ContactForm({ data }) {

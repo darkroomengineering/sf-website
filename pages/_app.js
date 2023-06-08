@@ -6,7 +6,7 @@ import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger'
 import { GTM_ID } from 'lib/analytics'
 import { useStore } from 'lib/store'
-import { ProjectProvider, RafDriverProvider } from 'lib/theatre'
+// import { ProjectProvider, RafDriverProvider } from 'lib/theatre'
 import dynamic from 'next/dynamic'
 import Script from 'next/script'
 import { useEffect } from 'react'
@@ -75,14 +75,14 @@ function MyApp({ Component, pageProps }) {
       {/* <PageTransition /> */}
       <RealViewport />
       <Noise />
-      <ProjectProvider
+      {/* <ProjectProvider
         id="Satus"
         config="/config/Satus-2023-04-17T12_55_21.json"
       >
-        <RafDriverProvider id="default">
-          <Component {...pageProps} />
-        </RafDriverProvider>
-      </ProjectProvider>
+        <RafDriverProvider id="default"> */}
+      <Component {...pageProps} />
+      {/* </RafDriverProvider>
+      </ProjectProvider> */}
     </>
   )
 }

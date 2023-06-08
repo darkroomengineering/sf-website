@@ -1,4 +1,8 @@
-lockfileVersion: '6.0'
+lockfileVersion: '6.1'
+
+settings:
+  autoInstallPeers: false
+  excludeLinksFromLockfile: false
 
 overrides:
   react-is: 18.2.0
@@ -13,13 +17,13 @@ dependencies:
     version: 1.1.2(react-dom@18.2.0)(react@18.2.0)
   '@studio-freight/compono':
     specifier: ^0.0.20
-    version: 0.0.20(next@13.4.4)(react-dom@18.2.0)(react@18.2.0)(sass@1.62.1)
+    version: 0.0.20(next@13.4.4)(react-dom@18.2.0)(react@18.2.0)(sass@1.63.2)
   '@studio-freight/hamo':
-    specifier: ^0.6.17
-    version: 0.6.17(react-dom@18.2.0)(react@18.2.0)
+    specifier: ^0.6.18
+    version: 0.6.18(react-dom@18.2.0)(react@18.2.0)
   '@studio-freight/react-lenis':
-    specifier: 0.0.20
-    version: 0.0.20(react-dom@18.2.0)(react@18.2.0)
+    specifier: 0.0.21
+    version: 0.0.21(react-dom@18.2.0)(react@18.2.0)
   '@studio-freight/tempus':
     specifier: 0.0.37
     version: 0.0.37
@@ -48,8 +52,8 @@ dependencies:
     specifier: ^2.12.6
     version: 2.12.6(graphql@16.6.0)
   gsap:
-    specifier: ^3.12.0
-    version: 3.12.0
+    specifier: ^3.12.1
+    version: 3.12.1
   idb-keyval:
     specifier: ^6.2.1
     version: 6.2.1
@@ -61,7 +65,7 @@ dependencies:
     version: 13.2.2
   next:
     specifier: 13.4.4
-    version: 13.4.4(react-dom@18.2.0)(react@18.2.0)(sass@1.62.1)
+    version: 13.4.4(react-dom@18.2.0)(react@18.2.0)(sass@1.63.2)
   next-pwa:
     specifier: 5.6.0
     version: 5.6.0(next@13.4.4)
@@ -84,8 +88,8 @@ dependencies:
     specifier: ^2.1.1
     version: 2.1.1(react-dom@18.2.0)(react@18.2.0)
   sass:
-    specifier: ^1.62.1
-    version: 1.62.1
+    specifier: ^1.63.2
+    version: 1.63.2
   throttle-debounce:
     specifier: 5.0.0
     version: 5.0.0
@@ -2243,8 +2247,8 @@ packages:
       rollup: 2.79.1
     dev: false
 
-  /@rushstack/eslint-patch@1.3.0:
-    resolution: {integrity: sha512-IthPJsJR85GhOkp3Hvp8zFOPK5ynKn6STyHa/WZpioK7E1aYDiBzpqQPrngc14DszIUkIrdd3k9Iu0XSzlP/1w==}
+  /@rushstack/eslint-patch@1.3.1:
+    resolution: {integrity: sha512-RkmuBcqiNioeeBKbgzMlOdreUkJfYaSjwgx9XDgGGpjvWgyaxWvDmZVSN9CS6LjEASadhgPv2BcFp+SeouWXXA==}
     dev: true
 
   /@sitespeed.io/tracium@0.3.3:
@@ -2297,7 +2301,7 @@ packages:
       - utf-8-validate
     dev: true
 
-  /@studio-freight/compono@0.0.20(next@13.4.4)(react-dom@18.2.0)(react@18.2.0)(sass@1.62.1):
+  /@studio-freight/compono@0.0.20(next@13.4.4)(react-dom@18.2.0)(react@18.2.0)(sass@1.63.2):
     resolution: {integrity: sha512-E2Au+XQKefLGGEHTDOWJze0DDM2ioDmMdTYitcrmWxLk/V2zvKngCVOCzW9soIbU5m/LCvJzQvENUcFIHRBXBg==}
     peerDependencies:
       next: ^13.2.4
@@ -2308,20 +2312,20 @@ packages:
       '@next/bundle-analyzer': 13.4.4
       '@radix-ui/react-accordion': 1.1.2(react-dom@18.2.0)(react@18.2.0)
       '@radix-ui/react-select': 1.2.2(react-dom@18.2.0)(react@18.2.0)
-      '@studio-freight/hamo': 0.6.17(react-dom@18.2.0)(react@18.2.0)
+      '@studio-freight/hamo': 0.6.18(react-dom@18.2.0)(react@18.2.0)
       '@studio-freight/react-lenis': 0.0.20(react-dom@18.2.0)(react@18.2.0)
       clsx: 1.2.1
       duplicate-package-checker-webpack-plugin: 3.0.0
       embla-carousel-autoplay: 7.1.0
       embla-carousel-react: 7.1.0(react@18.2.0)
-      gsap: 3.12.0
+      gsap: 3.12.1
       lottie-web: 5.12.0
-      next: 13.4.4(react-dom@18.2.0)(react@18.2.0)(sass@1.62.1)
+      next: 13.4.4(react-dom@18.2.0)(react@18.2.0)(sass@1.63.2)
       next-pwa: 5.6.0(next@13.4.4)
       next-seo: 6.0.0(next@13.4.4)(react-dom@18.2.0)(react@18.2.0)
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
-      sass: 1.62.1
+      sass: 1.63.2
       stats.js: 0.17.0
     transitivePeerDependencies:
       - '@babel/core'
@@ -2352,8 +2356,8 @@ packages:
       throttle-debounce: 5.0.0
     dev: false
 
-  /@studio-freight/hamo@0.6.17(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-oINOWp4dl4LE/l2+4KXLbyhnjrAE7jGFbqxrt4yBkZ2KUyLB0DHXLaMuLKr+gxIfIqHWtYT2tQQDgzPMhpIzPg==}
+  /@studio-freight/hamo@0.6.18(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-/qSSbKY7noqvQME7F5GO2Fa+d43L4gMOk9TX0Hn5D2Wx6mAnaQHC49Zdg/7nGnHfybf4VPLaaqVYs6J8VXonLQ==}
     peerDependencies:
       react: ^18.2.0
       react-dom: ^18.2.0
@@ -2376,6 +2380,22 @@ packages:
       react-dom: ^18.2.0
     dependencies:
       '@studio-freight/hamo': 0.6.13(react-dom@18.2.0)(react@18.2.0)
+      '@studio-freight/lenis': 1.0.14
+      prop-types: 15.8.1
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+      zustand: 4.3.8(react@18.2.0)
+    transitivePeerDependencies:
+      - immer
+    dev: false
+
+  /@studio-freight/react-lenis@0.0.21(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-j8t6BqqTPMlSkbCbbAQDxpuJ8kKTr9iuPBaPSNHKYUDl4UIzCJdSDdqaaD6Q0rGaq0/DfCnNjMKQSOyoJWKXvA==}
+    peerDependencies:
+      react: ^18.2.0
+      react-dom: ^18.2.0
+    dependencies:
+      '@studio-freight/hamo': 0.6.18(react-dom@18.2.0)(react@18.2.0)
       '@studio-freight/lenis': 1.0.14
       prop-types: 15.8.1
       react: 18.2.0
@@ -3051,7 +3071,7 @@ packages:
     hasBin: true
     dependencies:
       caniuse-lite: 1.0.30001495
-      electron-to-chromium: 1.4.423
+      electron-to-chromium: 1.4.425
       node-releases: 2.0.12
       update-browserslist-db: 1.0.11(browserslist@4.21.7)
 
@@ -3580,8 +3600,8 @@ packages:
       jake: 10.8.7
     dev: false
 
-  /electron-to-chromium@1.4.423:
-    resolution: {integrity: sha512-y4A7YfQcDGPAeSWM1IuoWzXpg9RY1nwHzHSwRtCSQFp9FgAVDgdWlFf0RbdWfLWQ2WUI+bddUgk5RgTjqRE6FQ==}
+  /electron-to-chromium@1.4.425:
+    resolution: {integrity: sha512-wv1NufHxu11zfDbY4fglYQApMswleE9FL/DSeyOyauVXDZ+Kco96JK/tPfBUaDqfRarYp2WH2hJ/5UnVywp9Jg==}
 
   /embla-carousel-autoplay@7.1.0:
     resolution: {integrity: sha512-nYfgSGn3ek44OzwO0t/Ptuxq4PNPD5l7Y9X7JjLYI/DN1uGjqxz9L73YYqR6YCRDnTYJ88s9fep48dzBnSG4vQ==}
@@ -3743,7 +3763,7 @@ packages:
         optional: true
     dependencies:
       '@next/eslint-plugin-next': 13.4.4
-      '@rushstack/eslint-patch': 1.3.0
+      '@rushstack/eslint-patch': 1.3.1
       '@typescript-eslint/parser': 5.59.9(eslint@8.42.0)(typescript@4.9.5)
       eslint: 8.42.0
       eslint-import-resolver-node: 0.3.7
@@ -4431,8 +4451,8 @@ packages:
     engines: {node: ^12.22.0 || ^14.16.0 || ^16.0.0 || >=17.0.0}
     dev: false
 
-  /gsap@3.12.0:
-    resolution: {integrity: sha512-sWSZ8OT91MHWNt7K9Cuj15spfXr94X2ZXscQQ0ZKKHKvru4jrbO70yjSCs6ZRtf3JplDHMQCII9YNWtEitWjYg==}
+  /gsap@3.12.1:
+    resolution: {integrity: sha512-FXtb2YbBE9l8I9Pl5DFLpCMedaiMPztRlr0Ln0CMSnJn+pbTaeKlzgth8cLNPc7PzNwIZe+SEQiBBAWaBKJdVA==}
     dev: false
 
   /gzip-size@6.0.0:
@@ -5240,7 +5260,7 @@ packages:
       babel-loader: 8.3.0
       clean-webpack-plugin: 4.0.0
       globby: 11.1.0
-      next: 13.4.4(react-dom@18.2.0)(react@18.2.0)(sass@1.62.1)
+      next: 13.4.4(react-dom@18.2.0)(react@18.2.0)(sass@1.63.2)
       terser-webpack-plugin: 5.3.9
       workbox-webpack-plugin: 6.6.0
       workbox-window: 6.6.0
@@ -5261,7 +5281,7 @@ packages:
       react: '>=16.0.0'
       react-dom: '>=16.0.0'
     dependencies:
-      next: 13.4.4(react-dom@18.2.0)(react@18.2.0)(sass@1.62.1)
+      next: 13.4.4(react-dom@18.2.0)(react@18.2.0)(sass@1.63.2)
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
     dev: false
@@ -5277,10 +5297,10 @@ packages:
       '@corex/deepmerge': 4.0.43
       fast-glob: 3.2.12
       minimist: 1.2.8
-      next: 13.4.4(react-dom@18.2.0)(react@18.2.0)(sass@1.62.1)
+      next: 13.4.4(react-dom@18.2.0)(react@18.2.0)(sass@1.63.2)
     dev: false
 
-  /next@13.4.4(react-dom@18.2.0)(react@18.2.0)(sass@1.62.1):
+  /next@13.4.4(react-dom@18.2.0)(react@18.2.0)(sass@1.63.2):
     resolution: {integrity: sha512-C5S0ysM0Ily9McL4Jb48nOQHT1BukOWI59uC3X/xCMlYIh9rJZCv7nzG92J6e1cOBqQbKovlpgvHWFmz4eKKEA==}
     engines: {node: '>=16.8.0'}
     hasBin: true
@@ -5305,7 +5325,7 @@ packages:
       postcss: 8.4.14
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
-      sass: 1.62.1
+      sass: 1.63.2
       styled-jsx: 5.1.1(react@18.2.0)
       zod: 3.21.4
     optionalDependencies:
@@ -6073,8 +6093,8 @@ packages:
       get-intrinsic: 1.2.1
       is-regex: 1.1.4
 
-  /sass@1.62.1:
-    resolution: {integrity: sha512-NHpxIzN29MXvWiuswfc1W3I0N8SXBd8UR26WntmDlRYf0bSADnwnOjsyMZ3lMezSlArD33Vs3YFhp7dWvL770A==}
+  /sass@1.63.2:
+    resolution: {integrity: sha512-u56TU0AIFqMtauKl/OJ1AeFsXqRHkgO7nCWmHaDwfxDo9GUMSqBA4NEh6GMuh1CYVM7zuROYtZrHzPc2ixK+ww==}
     engines: {node: '>=14.0.0'}
     hasBin: true
     dependencies:
@@ -6098,8 +6118,8 @@ packages:
       ajv-keywords: 3.5.2(ajv@6.12.6)
     dev: false
 
-  /schema-utils@3.1.2:
-    resolution: {integrity: sha512-pvjEHOgWc9OWA/f/DE3ohBWTD6EleVLf7iFUkoSwAxttdBhB9QUebQgxER2kWueOvRJXPHNnyrvvh9eZINB8Eg==}
+  /schema-utils@3.2.0:
+    resolution: {integrity: sha512-0zTyLGyDJYd/MBxG1AhJkKa6fpEBds4OQO2ut0w7OYG+ZGhGea09lijvzsqegYSik88zc7cUtIlnnO+/BvD6gQ==}
     engines: {node: '>= 10.13.0'}
     dependencies:
       '@types/json-schema': 7.0.12
@@ -6566,7 +6586,7 @@ packages:
     dependencies:
       '@jridgewell/trace-mapping': 0.3.18
       jest-worker: 27.5.1
-      schema-utils: 3.1.2
+      schema-utils: 3.2.0
       serialize-javascript: 6.0.1
       terser: 5.17.7
     dev: false

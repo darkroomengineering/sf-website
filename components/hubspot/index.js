@@ -3,7 +3,7 @@ import cn from 'clsx'
 import { useStore } from 'lib/store'
 import { Fragment, useEffect, useState } from 'react'
 import { Controller, useForm } from 'react-hook-form'
-import shallow from 'zustand/shallow'
+import { shallow } from 'zustand/shallow'
 import {
   InputField,
   MultipleCheckboxField,
