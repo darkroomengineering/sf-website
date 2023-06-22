@@ -47,8 +47,8 @@ export function Gallery() {
           <div key={i} ref={contentRef}>
             <ComposableImage
               sources={asset.imagesCollection}
-              width={1038}
-              height={611}
+              width={1557}
+              height={916.5}
               large
             />
           </div>
