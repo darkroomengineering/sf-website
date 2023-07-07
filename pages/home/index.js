@@ -17,6 +17,7 @@ import { Layout } from 'layouts/default'
 import { getForm } from 'lib/hubspot'
 import { useStore } from 'lib/store'
 import dynamic from 'next/dynamic'
+import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
 import { shallow } from 'zustand/shallow'
 import s from './home.module.scss'
@@ -27,25 +28,33 @@ const Gallery = dynamic(
   () => import('components/gallery').then(({ Gallery }) => Gallery),
   {
     ssr: false,
-  }
+  },
 )
 
 export default function Home({ studioFreight, footer, contact, projects }) {
+  const router = useRouter()
+
   const [showInfoModal, setShowInfoModal] = useState(false)
   const [resetScroll, setResetScroll] = useState(false)
   const isDesktop = useMediaQuery('(min-width: 800px)')
   const [selectedProject, setSelectedProject] = useStore(
     (state) => [state.selectedProject, state.setSelectedProject],
-    shallow
+    shallow,
   )
   const [setGalleryVisible] = useStore(
     (state) => [state.setGalleryVisible],
-    shallow
+    shallow,
   )
 
   useEffect(() => {
-    setSelectedProject(projects.items[0])
-  }, [])
+    const searchTerm = router.asPath.substring(router.asPath.indexOf('#') + 1)
+
+    const matchingItem = projects.items.find((item) =>
+      item.name.toLowerCase().includes(searchTerm),
+    )
+
+    setSelectedProject(matchingItem || projects.items[0])
+  }, [router.asPath])
 
   useEffect(() => {
     if (selectedProject) {
@@ -95,7 +104,7 @@ export default function Home({ studioFreight, footer, contact, projects }) {
                       key={project.sys.id}
                       className={cn(
                         selectedProject?.sys?.id === project.sys.id && s.active,
-                        s['list-item']
+                        s['list-item'],
                       )}
                     >
                       <button
@@ -120,7 +129,7 @@ export default function Home({ studioFreight, footer, contact, projects }) {
                 <p
                   className={cn(
                     s.title,
-                    'p text-bold text-uppercase text-muted'
+                    'p text-bold text-uppercase text-muted',
                   )}
                 >
                   Project detail
@@ -172,7 +181,7 @@ export default function Home({ studioFreight, footer, contact, projects }) {
                             height={604}
                           />
                         </button>
-                      )
+                      ),
                     )}
                   </ScrollableBox>
                 </div>
@@ -190,7 +199,7 @@ export default function Home({ studioFreight, footer, contact, projects }) {
                       <p
                         className={cn(
                           s.title,
-                          'p text-muted text-uppercase text-bold'
+                          'p text-muted text-uppercase text-bold',
                         )}
                       >
                         Testimonial
@@ -203,7 +212,7 @@ export default function Home({ studioFreight, footer, contact, projects }) {
                       <p
                         className={cn(
                           s.title,
-                          'p text-muted text-uppercase text-bold'
+                          'p text-muted text-uppercase text-bold',
                         )}
                       >
                         Services
@@ -212,7 +221,7 @@ export default function Home({ studioFreight, footer, contact, projects }) {
                         {selectedProject?.services?.map((service, i) =>
                           i === selectedProject.services.length - 1
                             ? service
-                            : `${service}, `
+                            : `${service}, `,
                         )}
                       </p>
                     </div>
@@ -222,7 +231,7 @@ export default function Home({ studioFreight, footer, contact, projects }) {
                       <p
                         className={cn(
                           s.title,
-                          'p text-muted text-uppercase text-bold'
+                          'p text-muted text-uppercase text-bold',
                         )}
                       >
                         Stack
@@ -231,7 +240,7 @@ export default function Home({ studioFreight, footer, contact, projects }) {
                         {selectedProject?.stack?.map((item, i) =>
                           i === selectedProject.stack.length - 1
                             ? item
-                            : `${item}, `
+                            : `${item}, `,
                         )}
                       </p>
                     </div>

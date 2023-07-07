@@ -1,12 +1,5 @@
-const runtimeCaching = require('next-pwa/cache')
-const withPWA = require('next-pwa')({
+const withPWA = require('@ducanh2912/next-pwa').default({
   dest: 'public',
-  register: true,
-  skipWaiting: true,
-  runtimeCaching,
-  disable: process.env.NODE_ENV === 'development',
-  buildExcludes: [/middleware-manifest.json$/],
-  maximumFileSizeToCacheInBytes: 4000000,
 })
 const DuplicatePackageCheckerPlugin = require('duplicate-package-checker-webpack-plugin')
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
@@ -100,7 +93,7 @@ const nextConfig = {
             loader: 'graphql-tag/loader',
           },
         ],
-      }
+      },
     )
 
     config.plugins.push(new DuplicatePackageCheckerPlugin())
