@@ -15,6 +15,7 @@ import {
 import { renderer } from 'contentful/renderer'
 import { Layout } from 'layouts/default'
 import { getForm } from 'lib/hubspot'
+import { slugify } from 'lib/slugify'
 import { useStore } from 'lib/store'
 import dynamic from 'next/dynamic'
 import { useRouter } from 'next/router'
@@ -50,7 +51,7 @@ export default function Home({ studioFreight, footer, contact, projects }) {
     const searchTerm = router.asPath.substring(router.asPath.indexOf('#') + 1)
 
     const matchingItem = projects.items.find((item) =>
-      item.name.toLowerCase().includes(searchTerm),
+      slugify(item.name).includes(searchTerm),
     )
 
     setSelectedProject(matchingItem || projects.items[0])
