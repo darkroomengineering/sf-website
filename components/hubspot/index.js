@@ -1,5 +1,6 @@
 import { Button } from '@studio-freight/compono'
 import cn from 'clsx'
+import { createHubspotDeal } from 'lib/hubspot'
 import { useStore } from 'lib/store'
 import { Fragment, useEffect, useState } from 'react'
 import { Controller, useForm } from 'react-hook-form'
@@ -77,6 +78,26 @@ export const Hubspot = ({ form, children }) => {
       },
     }
 
+    const dealData = {
+      properties: {
+        dealstage: 'bf25df15-53fb-48aa-9f5f-0fe15f725ea2',
+      },
+      associations: {
+        contacts: [],
+      },
+    }
+
+    data.fields.forEach((field) => {
+      if (field.name === 'budget_expectation') {
+        const amount = field.value.replace(/[^0-9\.]/g, '') // extract numbers and period
+        dealData.properties.amount = Number(amount) * 1000 // assuming 'k' stands for thousand
+      }
+      if (field.name === 'company') {
+        dealData.properties.dealname = field.value
+      }
+      // add more conditions if you want to map other fields
+    })
+
     removeHTMLFromStrings(data)
 
     fetch(url, {
@@ -89,6 +110,16 @@ export const Hubspot = ({ form, children }) => {
       .then((res) => res.json())
       .then((response) => {
         if (response?.status === 'error') return
+
+        console.log(response)
+
+        const contactId = response.vid
+        dealData.associations.contacts.push(contactId)
+
+        return createHubspotDeal(dealData)
+      })
+      .then((dealResponse) => {
+        console.log(dealResponse)
 
         if (form?.actions?.redirect && !!form.actions.redirectValue) {
           setShowThanks(true)
@@ -103,7 +134,6 @@ export const Hubspot = ({ form, children }) => {
           reset()
         }, 1500)
       })
-      .then(() => {})
       .catch((failed) => {
         console.log({ failed })
         failed?.errors?.map((error) => {
@@ -201,7 +231,7 @@ const FieldTypeSwitcher = ({ field, input, handlers }) => {
     default:
       console.log(
         'WARNING: Unknown Form Input Type and is not going to be render and may cause Form submiting problems. Type:',
-        input.type
+        input.type,
       )
       return null
   }
