@@ -80,7 +80,57 @@ export const Hubspot = ({ form, children }) => {
 
     const dealData = {
       properties: {
-        dealstage: 'bf25df15-53fb-48aa-9f5f-0fe15f725ea2',
+        // dealstage: 'bf25df15-53fb-48aa-9f5f-0fe15f725ea2',
+        amount: 0,
+        dealname: '',
+      },
+      associations: {
+        contacts: [],
+      },
+    }
+
+    data.fields.forEach((field) => {
+      if (field.name === 'budget_expectation') {
+        const amount = field.value.replace(/[^0-9\.]/g, '') // extract numbers and period
+        dealData.properties.amount = (Number(amount) * 1000).toString() // assuming 'k' stands for thousand
+      }
+      if (field.name === 'company') {
+        dealData.properties.dealname = field.value
+      }
+      // add more conditions if you want to map other fields
+    })
+
+    createHubspotDeal(dealData)
+  }
+
+  const onSubmit2 = (input) => {
+    const hsCookie = document.cookie.split(';').reduce((cookies, cookie) => {
+      const [name, value] = cookie.split('=').map((c) => c.trim())
+      cookies[name] = value
+      return cookies
+    }, {})
+
+    const data = {
+      fields: formFields.map((item) => {
+        return {
+          name: item,
+          value: input[item] || '',
+        }
+      }),
+      context: {
+        hutk: hsCookie?.hubspotutk,
+        pageUri: `${window.location.href}`,
+        pageName: `${window.location.pathname}`,
+        ipAddress: `${IP}`,
+      },
+    }
+
+    const dealData = {
+      properties: {
+        // dealstage: 'bf25df15-53fb-48aa-9f5f-0fe15f725ea2',
+        dealstage: '',
+        dealname: '',
+        amount: '',
       },
       associations: {
         contacts: [],
@@ -141,6 +191,8 @@ export const Hubspot = ({ form, children }) => {
         })
       })
   }
+
+  console.log(onSubmit2)
 
   const helpers = {
     handlers: {
