@@ -1,6 +1,5 @@
 import { Button } from '@studio-freight/compono'
 import cn from 'clsx'
-import { createHubspotDeal } from 'lib/hubspot'
 import { useStore } from 'lib/store'
 import { Fragment, useEffect, useState } from 'react'
 import { Controller, useForm } from 'react-hook-form'
@@ -56,6 +55,56 @@ export const Hubspot = ({ form, children }) => {
     fetchIP()
   }, [])
 
+  // const onSubmit = (input) => {
+  //   const hsCookie = document.cookie.split(';').reduce((cookies, cookie) => {
+  //     const [name, value] = cookie.split('=').map((c) => c.trim())
+  //     cookies[name] = value
+  //     return cookies
+  //   }, {})
+
+  //   const data = {
+  //     fields: formFields.map((item) => {
+  //       return {
+  //         name: item,
+  //         value: input[item] || '',
+  //       }
+  //     }),
+  //     context: {
+  //       hutk: hsCookie?.hubspotutk,
+  //       pageUri: `${window.location.href}`,
+  //       pageName: `${window.location.pathname}`,
+  //       ipAddress: `${IP}`,
+  //     },
+  //   }
+
+  //   const dealData = {
+  //     properties: {
+  //       // dealstage: 'bf25df15-53fb-48aa-9f5f-0fe15f725ea2',
+  //       amount: 0,
+  //       dealname: '',
+  //     },
+  //     associations: [],
+  //   }
+
+  //   data.fields.forEach((field) => {
+  //     if (field.name === 'budget_expectation') {
+  //       const amount = field.value.replace(/[^0-9\.]/g, '') // extract numbers and period
+  //       dealData.properties.amount = (Number(amount) * 1000).toString() // assuming 'k' stands for thousand
+  //     }
+  //     if (field.name === 'company') {
+  //       dealData.properties.dealname = field.value
+  //     }
+  //     // add more conditions if you want to map other fields
+  //   })
+
+  //   // createHubspotDeal(dealData)
+
+  //   fetch('/api/deals', {
+  //     method: 'POST',
+  //     body: JSON.stringify(dealData),
+  //   })
+  // }
+
   const onSubmit = (input) => {
     const hsCookie = document.cookie.split(';').reduce((cookies, cookie) => {
       const [name, value] = cookie.split('=').map((c) => c.trim())
@@ -80,67 +129,17 @@ export const Hubspot = ({ form, children }) => {
 
     const dealData = {
       properties: {
-        // dealstage: 'bf25df15-53fb-48aa-9f5f-0fe15f725ea2',
-        amount: 0,
+        dealstage: 'bf25df15-53fb-48aa-9f5f-0fe15f725ea2',
+        amount: '',
         dealname: '',
       },
-      associations: {
-        contacts: [],
-      },
+      associations: [],
     }
 
     data.fields.forEach((field) => {
       if (field.name === 'budget_expectation') {
         const amount = field.value.replace(/[^0-9\.]/g, '') // extract numbers and period
         dealData.properties.amount = (Number(amount) * 1000).toString() // assuming 'k' stands for thousand
-      }
-      if (field.name === 'company') {
-        dealData.properties.dealname = field.value
-      }
-      // add more conditions if you want to map other fields
-    })
-
-    createHubspotDeal(dealData)
-  }
-
-  const onSubmit2 = (input) => {
-    const hsCookie = document.cookie.split(';').reduce((cookies, cookie) => {
-      const [name, value] = cookie.split('=').map((c) => c.trim())
-      cookies[name] = value
-      return cookies
-    }, {})
-
-    const data = {
-      fields: formFields.map((item) => {
-        return {
-          name: item,
-          value: input[item] || '',
-        }
-      }),
-      context: {
-        hutk: hsCookie?.hubspotutk,
-        pageUri: `${window.location.href}`,
-        pageName: `${window.location.pathname}`,
-        ipAddress: `${IP}`,
-      },
-    }
-
-    const dealData = {
-      properties: {
-        // dealstage: 'bf25df15-53fb-48aa-9f5f-0fe15f725ea2',
-        dealstage: '',
-        dealname: '',
-        amount: '',
-      },
-      associations: {
-        contacts: [],
-      },
-    }
-
-    data.fields.forEach((field) => {
-      if (field.name === 'budget_expectation') {
-        const amount = field.value.replace(/[^0-9\.]/g, '') // extract numbers and period
-        dealData.properties.amount = Number(amount) * 1000 // assuming 'k' stands for thousand
       }
       if (field.name === 'company') {
         dealData.properties.dealname = field.value
@@ -166,7 +165,7 @@ export const Hubspot = ({ form, children }) => {
         const contactId = response.vid
         dealData.associations.contacts.push(contactId)
 
-        return createHubspotDeal(dealData)
+        // return createHubspotDeal(dealData)
       })
       .then((dealResponse) => {
         console.log(dealResponse)
@@ -190,9 +189,13 @@ export const Hubspot = ({ form, children }) => {
           console.log('failed: ', error)
         })
       })
-  }
 
-  console.log(onSubmit2)
+    //// TODO add catch for errors
+    fetch('/api/deals', {
+      method: 'POST',
+      body: JSON.stringify(dealData),
+    })
+  }
 
   const helpers = {
     handlers: {
