@@ -1,5 +1,6 @@
 import { Link, Marquee } from '@studio-freight/compono'
 import { useMediaQuery } from '@studio-freight/hamo'
+import va from '@vercel/analytics'
 import cn from 'clsx'
 import { ContactForm } from 'components/header/contact-form'
 import { Separator } from 'components/separator'
@@ -21,6 +22,7 @@ const StarDuotone = dynamic(() => import('icons/star-duotone.svg'), {
 
 export const Header = ({ principles = [], contact }) => {
   const isMobile = useMediaQuery('(max-width: 800px)')
+
   // const visible = usePageAppear()
   const [contactIsOpen, setContactIsOpen] = useStore((state) => [
     state.contactIsOpen,
@@ -74,6 +76,7 @@ export const Header = ({ principles = [], contact }) => {
         <button
           className={cn('button', s.cta)}
           onClick={() => {
+            va.track('Opened Contact Form')
             setContactIsOpen(!contactIsOpen)
           }}
         >
