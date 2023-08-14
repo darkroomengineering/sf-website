@@ -1,5 +1,4 @@
 import * as Accordion from '@radix-ui/react-accordion'
-import { Button } from '@studio-freight/compono'
 import cn from 'clsx'
 import { Hubspot } from 'components/hubspot'
 import { ScrollableBox } from 'components/scrollable-box'
@@ -10,7 +9,6 @@ import { slugify } from 'lib/slugify'
 import { useStore } from 'lib/store'
 import { useRouter } from 'next/router'
 import { useEffect, useRef } from 'react'
-import { shallow } from 'zustand/shallow'
 import s from './contact-form.module.scss'
 
 export function ContactForm({ data }) {
@@ -24,12 +22,15 @@ export function ContactForm({ data }) {
       state.showThanks,
       state.setShowThanks,
     ],
-    shallow
   )
 
   const closeContactTab = () => {
     setContactIsOpen(false)
-    router.push('/', '/', { shallow: true })
+    router.push({
+      pathname: router.pathname, // not router.asPath
+      query: { confirm: true },
+      shallow: true,
+    })
     if (showThanks) setShowThanks(false)
   }
 
@@ -53,9 +54,9 @@ export function ContactForm({ data }) {
       <div className={s.overlay} onClick={closeContactTab} />
       <div className={cn(s.wrapper, contactIsOpen && s.open)} ref={menuRef}>
         <div className={s.heading}>
-          <Button className={cn('button', s.cta)} onClick={closeContactTab}>
+          <button className={cn('button', s.cta)} onClick={closeContactTab}>
             close
-          </Button>
+          </button>
           <Separator className={s.separator} />
         </div>
         {showThanks ? (

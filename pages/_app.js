@@ -1,14 +1,13 @@
 import { RealViewport } from '@studio-freight/compono'
 import { useLenis } from '@studio-freight/react-lenis'
 import Tempus from '@studio-freight/tempus'
+import { Analytics } from '@vercel/analytics/react'
 import 'blaze-slider/dist/blaze.css'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger'
-import { GTM_ID } from 'lib/analytics'
 import { useStore } from 'lib/store'
 // import { ProjectProvider, RafDriverProvider } from 'lib/theatre'
 import dynamic from 'next/dynamic'
-import Script from 'next/script'
 import { useEffect } from 'react'
 import 'styles/global.scss'
 
@@ -16,7 +15,7 @@ const Noise = dynamic(
   () => import('components/noise').then(({ Noise }) => Noise),
   {
     ssr: false,
-  }
+  },
 )
 
 if (typeof window !== 'undefined') {
@@ -52,26 +51,6 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <>
-      {/* Google Tag Manager - Global base code */}
-      {process.env.NODE_ENV !== 'development' && (
-        <>
-          <Script
-            async
-            strategy="worker"
-            src={`https://www.googletagmanager.com/gtag/js?id=${GTM_ID}`}
-          />
-          <Script
-            id="gtm-base"
-            strategy="worker"
-            dangerouslySetInnerHTML={{
-              __html: `window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', '${GTM_ID}');`,
-            }}
-          />
-        </>
-      )}
       {/* <PageTransition /> */}
       <RealViewport />
       <Noise />
@@ -83,6 +62,7 @@ function MyApp({ Component, pageProps }) {
       <Component {...pageProps} />
       {/* </RafDriverProvider>
       </ProjectProvider> */}
+      <Analytics />
     </>
   )
 }

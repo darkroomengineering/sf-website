@@ -20,7 +20,6 @@ import { useStore } from 'lib/store'
 import dynamic from 'next/dynamic'
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
-import { shallow } from 'zustand/shallow'
 import s from './home.module.scss'
 
 const Arrow = dynamic(() => import('icons/arrow.svg'), { ssr: false })
@@ -38,14 +37,11 @@ export default function Home({ studioFreight, footer, contact, projects }) {
   const [showInfoModal, setShowInfoModal] = useState(false)
   const [resetScroll, setResetScroll] = useState(false)
   const isDesktop = useMediaQuery('(min-width: 800px)')
-  const [selectedProject, setSelectedProject] = useStore(
-    (state) => [state.selectedProject, state.setSelectedProject],
-    shallow,
-  )
-  const [setGalleryVisible] = useStore(
-    (state) => [state.setGalleryVisible],
-    shallow,
-  )
+  const [selectedProject, setSelectedProject] = useStore((state) => [
+    state.selectedProject,
+    state.setSelectedProject,
+  ])
+  const [setGalleryVisible] = useStore((state) => [state.setGalleryVisible])
 
   useEffect(() => {
     const searchTerm = router.asPath.substring(router.asPath.indexOf('#') + 1)
