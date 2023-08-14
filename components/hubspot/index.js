@@ -80,17 +80,20 @@ export const Hubspot = ({ form, children }) => {
     const dealData = {
       properties: {
         dealstage: 'bf25df15-53fb-48aa-9f5f-0fe15f725ea2',
-        amount: '',
+        // amount: '', not necessary for now
         dealname: '',
+        inquiry_date: new Date().toISOString().slice(0, 10),
+        hubspot_owner_id: '33278223', /// clays hubspot id
       },
+
       associations: [],
     }
 
     data.fields.forEach((field) => {
-      if (field.name === 'budget_expectation') {
-        const amount = field.value.replace(/[^0-9\.]/g, '') // extract numbers and period
-        dealData.properties.amount = (Number(amount) * 1000).toString() // assuming 'k' stands for thousand
-      }
+      // if (field.name === 'budget_expectation') {
+      //   const amount = field.value.replace(/[^0-9\.]/g, '') // extract numbers and period
+      //   dealData.properties.amount = (Number(amount) * 1000).toString() // assuming 'k' stands for thousand
+      // }
       if (field.name === 'company') {
         dealData.properties.dealname = field.value
       }
@@ -98,7 +101,6 @@ export const Hubspot = ({ form, children }) => {
     })
 
     removeHTMLFromStrings(data)
-
     fetch(url, {
       method: 'POST',
       body: JSON.stringify(data),
@@ -111,9 +113,6 @@ export const Hubspot = ({ form, children }) => {
         if (response?.status === 'error') return
 
         console.log(response)
-
-        // const contactId = response.vid
-        // dealData.associations.push({ contacts: contactId })
 
         fetch('/api/deals', {
           method: 'POST',
