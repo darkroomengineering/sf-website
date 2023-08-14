@@ -83,17 +83,13 @@ export const Hubspot = ({ form, children }) => {
         // amount: '', not necessary for now
         dealname: '',
         inquiry_date: new Date().toISOString().slice(0, 10),
-        hubspot_owner_id: '33278223', /// clays hubspot id
+        hubspot_owner_id: `${process.env.HUSBPOT_OWNER_ID}`,
       },
 
       associations: [],
     }
 
     data.fields.forEach((field) => {
-      // if (field.name === 'budget_expectation') {
-      //   const amount = field.value.replace(/[^0-9\.]/g, '') // extract numbers and period
-      //   dealData.properties.amount = (Number(amount) * 1000).toString() // assuming 'k' stands for thousand
-      // }
       if (field.name === 'company') {
         dealData.properties.dealname = field.value
       }
