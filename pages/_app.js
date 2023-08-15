@@ -32,6 +32,18 @@ if (typeof window !== 'undefined') {
   // reset scroll position
   window.scrollTo(0, 0)
   window.history.scrollRestoration = 'manual'
+
+  window.CREDIT_ME = {
+    id: location.hostname,
+    url: 'https://studiofreight.com',
+    credits: [
+      {
+        name: 'Studio Freight',
+        email: 'hello@studiofreight.com',
+        website: 'https://studiofreight.com',
+      },
+    ],
+  }
 }
 
 function MyApp({ Component, pageProps }) {
