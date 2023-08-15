@@ -1,7 +1,6 @@
 const withPWA = require('@ducanh2912/next-pwa').default({
   dest: 'public',
 })
-const DuplicatePackageCheckerPlugin = require('duplicate-package-checker-webpack-plugin')
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',
 })
@@ -95,8 +94,6 @@ const nextConfig = {
         ],
       },
     )
-
-    config.plugins.push(new DuplicatePackageCheckerPlugin())
 
     // config.resolve.alias = {
     //   ...config.resolve.alias,
