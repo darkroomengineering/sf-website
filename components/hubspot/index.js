@@ -80,10 +80,9 @@ export const Hubspot = ({ form, children }) => {
     const dealData = {
       properties: {
         dealstage: 'bf25df15-53fb-48aa-9f5f-0fe15f725ea2',
-        // amount: '', not necessary for now
         dealname: '',
         inquiry_date: new Date().toISOString().slice(0, 10),
-        hubspot_owner_id: `${process.env.HUSBPOT_OWNER_ID}`,
+        hubspot_owner_id: `${process.env.NEXT_PUBLIC_HUSBPOT_OWNER_ID}`,
       },
 
       associations: [],
