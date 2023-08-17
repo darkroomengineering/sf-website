@@ -184,8 +184,6 @@ export const Hubspot = ({ form, children }) => {
       })
   }
 
-  // bizdev
-
   const helpers = {
     handlers: {
       handleSubmit,
