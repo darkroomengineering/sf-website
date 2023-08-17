@@ -146,7 +146,7 @@ export const Hubspot = ({ form, children }) => {
 
               {
                 type: 'mrkdwn',
-                text: `* Check it out:*\nhttps://app.hubspot.com/contacts/${process.env.NEXT_PUBLIC_HUSBPOT_TEAM_ID}/record/0-3/${dealID}`,
+                text: `*Review deal in hubspot:*\nhttps://app.hubspot.com/contacts/${process.env.NEXT_PUBLIC_HUSBPOT_TEAM_ID}/record/0-3/${dealID}`,
               },
             ],
           },
