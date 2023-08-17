@@ -88,9 +88,15 @@ export const Hubspot = ({ form, children }) => {
       associations: [],
     }
 
+    let contactEmail = ''
+    let dealID = ''
+
     data.fields.forEach((field) => {
       if (field.name === 'company') {
         dealData.properties.dealname = field.value
+      }
+      if (field.name === 'email') {
+        contactEmail = field.value
       }
       // add more conditions if you want to map other fields
     })
@@ -103,19 +109,60 @@ export const Hubspot = ({ form, children }) => {
         'Content-Type': 'application/json',
       },
     })
-      .then((res) => res.json())
-      .then((response) => {
-        if (response?.status === 'error') return
 
-        console.log(response)
-
-        fetch('/api/deals', {
-          method: 'POST',
-          body: JSON.stringify(dealData),
-        })
+    fetch('/api/create-deals', {
+      method: 'POST',
+      body: JSON.stringify(dealData),
+    })
+      .then((res) => {
+        if (res?.status === 'error') return
+        return res.json()
       })
       .then((dealResponse) => {
-        console.log({ dealResponse })
+        console.log('DEAL REPONSE', dealResponse.id)
+        dealID = dealResponse.id
+
+        const blockDealData = [
+          {
+            type: 'section',
+            text: {
+              type: 'mrkdwn',
+              text: ':rotating_light: New BizDev Inquiry :rotating_light:',
+            },
+          },
+          {
+            type: 'section',
+            fields: [
+              {
+                type: 'mrkdwn',
+                text: `*Company Name:*\n${dealData.properties.dealname}`,
+              },
+              {
+                type: 'mrkdwn',
+                text: `*When:*\n${dealData.properties.inquiry_date}`,
+              },
+              {
+                type: 'mrkdwn',
+                text: `*Contact Info:*\n${contactEmail}`,
+              },
+
+              {
+                type: 'mrkdwn',
+                text: `* Check it out:*\nhttps://app.hubspot.com/contacts/${process.env.NEXT_PUBLIC_HUSBPOT_TEAM_ID}/record/0-3/${dealID}`,
+              },
+            ],
+          },
+        ]
+
+        fetch('/api/slack', {
+          method: 'POST',
+          body: JSON.stringify({
+            blocks: blockDealData,
+          }),
+        })
+      })
+      .then((slackResponse) => {
+        console.log({ slackResponse })
 
         if (form?.actions?.redirect && !!form.actions.redirectValue) {
           setShowThanks(true)
@@ -130,6 +177,7 @@ export const Hubspot = ({ form, children }) => {
           reset()
         }, 1500)
       })
+
       .catch((failed) => {
         console.log({ failed })
         failed?.errors?.map((error) => {
@@ -137,6 +185,8 @@ export const Hubspot = ({ form, children }) => {
         })
       })
   }
+
+  // bizdev
 
   const helpers = {
     handlers: {

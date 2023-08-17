@@ -25,6 +25,7 @@
     "@studio-freight/tempus": "0.0.38",
     "@theatre/core": "^0.6.1",
     "@theatre/studio": "^0.6.1",
+    "axios": "^1.4.0",
     "blaze-slider": "1.9.3",
     "clsx": "^1.2.1",
     "events": "^3.3.0",
