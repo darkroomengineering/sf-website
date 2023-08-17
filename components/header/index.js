@@ -1,12 +1,12 @@
-import { Button, Link, Marquee } from '@studio-freight/compono'
+import { Link, Marquee } from '@studio-freight/compono'
 import { useMediaQuery } from '@studio-freight/hamo'
+import va from '@vercel/analytics'
 import cn from 'clsx'
 import { ContactForm } from 'components/header/contact-form'
 import { Separator } from 'components/separator'
 import { pad } from 'lib/maths'
 import { useStore } from 'lib/store'
 import dynamic from 'next/dynamic'
-import { shallow } from 'zustand/shallow'
 import s from './header.module.scss'
 
 const SFLogo = dynamic(() => import('icons/sf-logo.svg'), { ssr: false })
@@ -22,11 +22,12 @@ const StarDuotone = dynamic(() => import('icons/star-duotone.svg'), {
 
 export const Header = ({ principles = [], contact }) => {
   const isMobile = useMediaQuery('(max-width: 800px)')
+
   // const visible = usePageAppear()
-  const [contactIsOpen, setContactIsOpen] = useStore(
-    (state) => [state.contactIsOpen, state.setContactIsOpen],
-    shallow
-  )
+  const [contactIsOpen, setContactIsOpen] = useStore((state) => [
+    state.contactIsOpen,
+    state.setContactIsOpen,
+  ])
 
   return (
     <header className={cn(s.container, 'layout-block')}>
@@ -72,14 +73,15 @@ export const Header = ({ principles = [], contact }) => {
             ))}
           </Marquee>
         )}
-        <Button
+        <button
           className={cn('button', s.cta)}
           onClick={() => {
+            va.track('Opened Contact Form')
             setContactIsOpen(!contactIsOpen)
           }}
         >
           Contact
-        </Button>
+        </button>
       </div>
       <Separator />
       <div className={cn(s.header, 'layout-grid')}>

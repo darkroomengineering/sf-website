@@ -1,5 +1,6 @@
 import { Link } from '@studio-freight/compono'
 import { useMediaQuery } from '@studio-freight/hamo'
+import va from '@vercel/analytics'
 import cn from 'clsx'
 import { ComposableImage } from 'components/composable-image'
 import { ClientOnly } from 'components/isomorphic'
@@ -20,7 +21,6 @@ import { useStore } from 'lib/store'
 import dynamic from 'next/dynamic'
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
-import { shallow } from 'zustand/shallow'
 import s from './home.module.scss'
 
 const Arrow = dynamic(() => import('icons/arrow.svg'), { ssr: false })
@@ -38,14 +38,11 @@ export default function Home({ studioFreight, footer, contact, projects }) {
   const [showInfoModal, setShowInfoModal] = useState(false)
   const [resetScroll, setResetScroll] = useState(false)
   const isDesktop = useMediaQuery('(min-width: 800px)')
-  const [selectedProject, setSelectedProject] = useStore(
-    (state) => [state.selectedProject, state.setSelectedProject],
-    shallow,
-  )
-  const [setGalleryVisible] = useStore(
-    (state) => [state.setGalleryVisible],
-    shallow,
-  )
+  const [selectedProject, setSelectedProject] = useStore((state) => [
+    state.selectedProject,
+    state.setSelectedProject,
+  ])
+  const [setGalleryVisible] = useStore((state) => [state.setGalleryVisible])
 
   useEffect(() => {
     const searchTerm = router.asPath.substring(router.asPath.indexOf('#') + 1)
@@ -110,6 +107,9 @@ export default function Home({ studioFreight, footer, contact, projects }) {
                     >
                       <button
                         onClick={() => {
+                          va.track('Selected:', {
+                            project: project.name,
+                          })
                           setSelectedProject(project)
                         }}
                       >
@@ -138,7 +138,12 @@ export default function Home({ studioFreight, footer, contact, projects }) {
                 <div className={s.actions}>
                   <button
                     className="p-s decorate"
-                    onClick={() => setShowInfoModal(!showInfoModal)}
+                    onClick={() => {
+                      va.track('Read info:', {
+                        project: selectedProject.name,
+                      })
+                      setShowInfoModal(!showInfoModal)
+                    }}
                   >
                     {showInfoModal ? 'close' : 'info'}
                   </button>
@@ -157,7 +162,12 @@ export default function Home({ studioFreight, footer, contact, projects }) {
                 <div className={cn(s.images, !showInfoModal && s.visible)}>
                   <button
                     className={cn(s['modal-trigger'], 'p-s')}
-                    onClick={() => setGalleryVisible(true)}
+                    onClick={() => {
+                      va.track('Opened Gallery:', {
+                        project: selectedProject.name,
+                      })
+                      setGalleryVisible(true)
+                    }}
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -174,7 +184,15 @@ export default function Home({ studioFreight, footer, contact, projects }) {
                   <ScrollableBox reset={showInfoModal || resetScroll}>
                     {selectedProject?.assetsCollection?.items.map(
                       (asset, i) => (
-                        <button key={i} onClick={() => setGalleryVisible(true)}>
+                        <button
+                          key={i}
+                          onClick={() => {
+                            va.track('Opened Gallery:', {
+                              project: selectedProject.name,
+                            })
+                            setGalleryVisible(true)
+                          }}
+                        >
                           <ComposableImage
                             sources={asset.imagesCollection}
                             priority={i === 0}

@@ -1,9 +1,7 @@
-import { Button } from '@studio-freight/compono'
 import cn from 'clsx'
 import { useStore } from 'lib/store'
 import { Fragment, useEffect, useState } from 'react'
 import { Controller, useForm } from 'react-hook-form'
-import { shallow } from 'zustand/shallow'
 import {
   InputField,
   MultipleCheckboxField,
@@ -32,7 +30,7 @@ const removeHTMLFromStrings = (data) => {
 }
 
 export const Hubspot = ({ form, children }) => {
-  const [setShowThanks] = useStore((state) => [state.setShowThanks], shallow)
+  const [setShowThanks] = useStore((state) => [state.setShowThanks])
 
   const { register, control, reset, handleSubmit, formState } = useForm({
     mode: 'onChange',
@@ -321,9 +319,9 @@ const Form = ({ handlers, form, className, children, style }) => {
             />
           )
         })}
-      <Button type="submit" className={cn('button', s.button)}>
+      <button type="submit" className={cn('button', s.button)}>
         {form.submitButton.text}
-      </Button>
+      </button>
       {children}
     </form>
   )
