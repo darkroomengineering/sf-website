@@ -11,7 +11,13 @@ export function Footer({ className, style, links, studioInfo }) {
     <footer className={s.container}>
       <Separator className="layout-block" />
       <div className={cn(s.footer, 'layout-grid', className)} style={style}>
-        <p className={cn(s.column, 'p-s text-muted')}>Built on Principle</p>
+        <a
+          href="/Studio-Freight-Capabilities.pdf"
+          download
+          className={cn(s.column, 'p-s text-accent')}
+        >
+          Capabilities Deck ↓
+        </a>
         {isMobile === false && (
           <>
             <ul className={s.column}>
