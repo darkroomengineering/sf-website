@@ -1,5 +1,6 @@
 import { Image, Link } from '@studio-freight/compono'
 import { useMediaQuery } from '@studio-freight/hamo'
+import va from '@vercel/analytics'
 import cn from 'clsx'
 import { Separator } from 'components/separator'
 import s from './footer.module.scss'
@@ -15,6 +16,7 @@ export function Footer({ className, style, links, studioInfo }) {
           href="/Studio-Freight-Capabilities.pdf"
           download
           className={cn(s.column, 'p-s text-accent')}
+          onClick={() => va.track('Downloaded Capabilities deck')}
         >
           Capabilities Deck ↓
         </a>
