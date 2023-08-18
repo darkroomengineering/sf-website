@@ -48,6 +48,8 @@
 
     @include desktop {
       &:nth-child(1) {
+        display: flex;
+        align-self: start;
         grid-column: span 2;
       }
       &:nth-child(2) {
