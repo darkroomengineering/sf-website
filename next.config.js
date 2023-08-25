@@ -4,6 +4,8 @@ const withPWA = require('@ducanh2912/next-pwa').default({
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',
 })
+const million = require('million/compiler')
+
 const path = require('path')
 
 const nextConfig = {
@@ -137,9 +139,17 @@ const nextConfig = {
   },
 }
 
-module.exports = () => {
+const nextConfigWrapper = () => {
   const plugins = [withPWA, withBundleAnalyzer]
   return plugins.reduce((acc, plugin) => plugin(acc), {
     ...nextConfig,
   })
 }
+
+const millionConfig = {
+  auto: true,
+  // if you're using RSC:
+  // auto: { rsc: true },
+}
+
+module.exports = million.next(nextConfigWrapper(), millionConfig)
