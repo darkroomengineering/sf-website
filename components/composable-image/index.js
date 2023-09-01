@@ -23,6 +23,7 @@ export function ComposableImage({
           className={cn(s.image, large && s.large, small && s.small)}
           style={{ '--height': height, '--width': width / amount }}
           priority={priority}
+          quality={95}
           sizes="(max-width: 768px) 100vw, 75vw"
         />
       ))}
