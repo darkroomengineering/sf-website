@@ -23,7 +23,7 @@ export function ComposableImage({
           className={cn(s.image, large && s.large, small && s.small)}
           style={{ '--height': height, '--width': width / amount }}
           priority={priority}
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 75vw"
+          sizes="(max-width: 768px) 100vw, 75vw"
         />
       ))}
     </div>
