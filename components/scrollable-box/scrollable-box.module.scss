@@ -10,6 +10,9 @@
     height: 0 !important;
   }
 
-  // fix bottom gradient
-  padding-bottom: desktop-vh(40px);
+  div {
+    @include desktop {
+      padding-bottom: desktop-vh(18px);
+    }
+  }
 }
