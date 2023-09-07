@@ -10,7 +10,7 @@
     height: 0 !important;
   }
 
-  div {
+  > div {
     @include desktop {
       padding-bottom: desktop-vh(18px);
     }
