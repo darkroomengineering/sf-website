@@ -13,7 +13,6 @@ const nextConfig = {
   transpilePackages: ['@studio-freight/compono'],
   experimental: {
     optimizeCss: true,
-    legacyBrowsers: false,
     nextScriptWorkers: true,
     urlImports: ['https://cdn.skypack.dev', 'https://unpkg.com'],
   },
