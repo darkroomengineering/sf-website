@@ -25,7 +25,8 @@
     .list-item {
       padding: desktop-vw(16px) 0;
       border-top: 1px solid var(--grey);
-      transition: color 500ms var(--ease-out-expo),
+      transition:
+        color 500ms var(--ease-out-expo),
         padding 500ms var(--ease-out-expo);
       position: relative;
 
@@ -131,6 +132,11 @@
           width: desktop-vw(24px);
           margin-right: desktop-vw(10px);
         }
+      }
+
+      .assetButton {
+        display: block;
+        width: 100%;
       }
 
       &:not(.visible) {

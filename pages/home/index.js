@@ -185,6 +185,7 @@ export default function Home({ studioFreight, footer, contact, projects }) {
                     {selectedProject?.assetsCollection?.items.map(
                       (asset, i) => (
                         <button
+                          className={s.assetButton}
                           key={i}
                           onClick={() => {
                             va.track('Opened Gallery:', {

@@ -3,6 +3,7 @@
   grid-template-columns: 1fr 1fr;
   overflow: hidden;
   grid-gap: mobile-vw(8px);
+  width: 100%;
 
   @include desktop {
     grid-gap: desktop-vw(8px);
@@ -11,18 +12,38 @@
 
   .image {
     grid-column: span 1;
-    height: mobile-vw(238px);
     width: auto;
-    aspect-ratio: var(--width) / var(--height);
     border-radius: mobile-vw(8px);
+    overflow: hidden;
 
     @include desktop {
-      height: desktop-vw(403px);
       border-radius: desktop-vw(8px);
+    }
+
+    &.videoWrap {
+      position: relative;
+
+      video {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
     }
 
     &:only-child {
       grid-column: span 2;
+      height: auto;
+      width: 100%;
+    }
+    &:not(:only-child) {
+      aspect-ratio: var(--width) / var(--height);
+      height: mobile-vw(238px);
+
+      @include desktop {
+        height: desktop-vw(403px);
+      }
     }
 
     &.large {
