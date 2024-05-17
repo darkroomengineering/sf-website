@@ -36,6 +36,10 @@
       grid-column: span 2;
       height: auto;
       width: 100%;
+
+      &.videoWrap video {
+        position: relative;
+      }
     }
     &:not(:only-child) {
       aspect-ratio: var(--width) / var(--height);
