@@ -3,6 +3,7 @@ import { Link } from '@studio-freight/compono'
 import cn from 'clsx'
 import { ComposableImage } from 'components/composable-image'
 import Slider from 'components/slider'
+import { renderer } from 'contentful/renderer'
 import { slugify } from 'lib/slugify'
 import dynamic from 'next/dynamic'
 import { useState } from 'react'
@@ -72,15 +73,15 @@ export const ProjectAccordion = ({ data }) => {
                   <Arrow className={s.arrow} />
                 </Link>
               )}
-              {item.description && (
-                <p className={cn(s.description, 'p')}>{item.description}</p>
+              {item.body && (
+                <div className={s.description}>{renderer(item.body)}</div>
               )}
               {item.testimonial && (
                 <div className={s.testimonial}>
                   <p
                     className={cn(
                       s.title,
-                      'p text-muted text-uppercase text-bold'
+                      'p text-muted text-uppercase text-bold',
                     )}
                   >
                     Testimonial
@@ -95,7 +96,7 @@ export const ProjectAccordion = ({ data }) => {
                     <p
                       className={cn(
                         s.title,
-                        'p text-muted text-uppercase text-bold'
+                        'p text-muted text-uppercase text-bold',
                       )}
                     >
                       Services
@@ -104,7 +105,7 @@ export const ProjectAccordion = ({ data }) => {
                       {item?.services?.map((service, i) =>
                         i === item.services.length - 1
                           ? service
-                          : `${service}, `
+                          : `${service}, `,
                       )}
                     </p>
                   </div>
@@ -114,14 +115,14 @@ export const ProjectAccordion = ({ data }) => {
                     <p
                       className={cn(
                         s.title,
-                        'p text-muted text-uppercase text-bold'
+                        'p text-muted text-uppercase text-bold',
                       )}
                     >
                       Stack
                     </p>
                     <p className="p-s text-uppercase">
                       {item?.stack?.map((stack, i) =>
-                        i === item.stack.length - 1 ? stack : `${stack}, `
+                        i === item.stack.length - 1 ? stack : `${stack}, `,
                       )}
                     </p>
                   </div>

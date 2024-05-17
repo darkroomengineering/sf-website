@@ -64,6 +64,9 @@ query projectListEntryQuery($preview: Boolean!) {
         name
         industry
         description
+        body {
+          json
+        }
         testimonial
         assetsCollection(limit: 20) {
           items {

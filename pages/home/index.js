@@ -60,6 +60,7 @@ export default function Home({ studioFreight, footer, contact, projects }) {
       setTimeout(() => {
         setResetScroll(false)
       }, 100)
+      console.log(selectedProject)
     }
   }, [selectedProject])
 
@@ -209,10 +210,10 @@ export default function Home({ studioFreight, footer, contact, projects }) {
                   className={cn(s.info, showInfoModal && s.visible)}
                   reset={!showInfoModal || resetScroll}
                 >
-                  {selectedProject.description && (
-                    <p className={cn(s.description, 'p')}>
-                      {selectedProject.description}
-                    </p>
+                  {selectedProject.body && (
+                    <div className={s.description}>
+                      {renderer(selectedProject.body)}
+                    </div>
                   )}
                   {selectedProject.testimonial && (
                     <div className={s.testimonial}>
