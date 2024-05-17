@@ -60,7 +60,6 @@ export default function Home({ studioFreight, footer, contact, projects }) {
       setTimeout(() => {
         setResetScroll(false)
       }, 100)
-      console.log(selectedProject)
     }
   }, [selectedProject])
 
