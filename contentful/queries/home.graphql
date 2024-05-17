@@ -63,7 +63,6 @@ query projectListEntryQuery($preview: Boolean!) {
         }
         name
         industry
-        description
         body {
           json
         }
