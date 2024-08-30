@@ -13,7 +13,6 @@ const SFLogo = dynamic(() => import('icons/sf-logo.svg'), { ssr: false })
 const SFLogoMobile = dynamic(() => import('icons/sf-logo-mobile.svg'), {
   ssr: false,
 })
-const SFDR = dynamic(() => import('icons/sfdr.svg'), { ssr: false })
 const Stard = dynamic(() => import('icons/stard.svg'), { ssr: false })
 const Monogram = dynamic(() => import('icons/sf-monogram.svg'), { ssr: false })
 const StarDuotone = dynamic(() => import('icons/star-duotone.svg'), {
@@ -46,13 +45,6 @@ export const Header = ({ principles = [], contact }) => {
             href="https://soundboard.studiofreight.com"
           >
             <Monogram />
-          </Link>
-          <Link
-            name="darkroom website"
-            className={s.egg}
-            href="https://darkroom.studiofreight.com"
-          >
-            <SFDR />
           </Link>
           <Link
             name="easter egg - pale blue dot"
