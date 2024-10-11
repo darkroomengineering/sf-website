@@ -143,6 +143,11 @@ const nextConfig = {
         destination: '/',
         permanent: true,
       },
+      {
+        source: '/capabilities',
+        destination: '/StudioFreight-Capabilities.pdf',
+        permanent: true,
+      },
     ]
   },
 }
