@@ -6,16 +6,8 @@ import { ComposableImage } from 'components/composable-image'
 import { ClientOnly } from 'components/isomorphic'
 import { LayoutMobile } from 'components/layout-mobile'
 import { ScrollableBox } from 'components/scrollable-box'
-import { fetchCmsQuery } from 'contentful/api'
-import {
-  contactEntryQuery,
-  footerEntryQuery,
-  projectListEntryQuery,
-  studioFreightEntryQuery,
-} from 'contentful/queries/home.graphql'
 import { renderer } from 'contentful/renderer'
 import { Layout } from 'layouts/default'
-import { getForm } from 'lib/hubspot'
 import { slugify } from 'lib/slugify'
 import { useStore } from 'lib/store'
 import dynamic from 'next/dynamic'
@@ -278,30 +270,139 @@ export default function Home({ studioFreight, footer, contact, projects }) {
 }
 
 export async function getStaticProps({ preview = false }) {
-  const [{ studioFreight }, { footer }, { contact }, { projectList }] =
-    await Promise.all([
-      fetchCmsQuery(studioFreightEntryQuery, {
-        preview,
-      }),
-      fetchCmsQuery(footerEntryQuery, {
-        preview,
-      }),
-      fetchCmsQuery(contactEntryQuery, {
-        preview,
-      }),
-      fetchCmsQuery(projectListEntryQuery, {
-        preview,
-      }),
-    ])
+  // const [{ studioFreight }, { footer }, { contact }, { projectList }] =
+  //   await Promise.all([
+  //     fetchCmsQuery(studioFreightEntryQuery, {
+  //       preview,
+  //     }),
+  //     fetchCmsQuery(footerEntryQuery, {
+  //       preview,
+  //     }),
+  //     fetchCmsQuery(contactEntryQuery, {
+  //       preview,
+  //     }),
+  //     fetchCmsQuery(projectListEntryQuery, {
+  //       preview,
+  //     }),
+  //   ])
 
-  contact.form = await getForm(contact.form)
+  // contact.form = await getForm(contact.form)
+  console.log('studioFreight', preview)
 
   return {
     props: {
-      studioFreight,
-      footer,
-      contact,
-      projects: projectList.listCollection,
+      studioFreight: {
+        about: {
+          nodeType: 'document',
+          content: [
+            {
+              nodeType: 'paragraph',
+              content: [
+                {
+                  nodeType: 'text',
+                  value: 'Hello',
+                  marks: [{ type: 'bold' }],
+                },
+                {
+                  nodeType: 'text',
+                  value: ' world!',
+                  marks: [{ type: 'italic' }],
+                },
+              ],
+            },
+          ],
+        },
+        email: 'wdqwdwq',
+        phoneNumber: 'dqdqwdq',
+        principles: ['@3', '23', '23', '23'],
+      },
+      footer: {
+        linksCollection: {
+          items: [{ text: 'dwdw', url: 'dwdw' }],
+        },
+      },
+      contact: {
+        form: {
+          portalId: 'dqwdqwdwqdqw',
+          form: {
+            portalId: 'dqwdqwdwqdqw',
+            id: 'dwdw',
+            submitButton: {
+              text: 'dewdeqwdqw',
+            },
+            inputs: [{ name: 'dwdw', type: 'dwdw' }],
+          },
+          fields: [{ name: 'dwdw', type: 'dwdw', portalId: 'dqwdqwdwqdqw' }],
+          action: 'dwdw',
+        },
+        description: 'dwdw',
+        thankYouMessage: 'dwdw',
+        body: 'dwdw',
+        faqsCollection: {
+          items: [{ title: 'dwdw', body: 'dwdw', content: 'wdwdqdq' }],
+          form: {
+            fields: [{ name: 'dwdw', type: 'dwdw' }],
+            action: 'dwdw',
+            portalId: 'Dqdqwdqw',
+            id: 'dwdw',
+            inputs: [{ name: 'dwdw', type: 'dwdw' }],
+          },
+        },
+      },
+      projects: {
+        items: [
+          {
+            name: 'Path Robotics 4A',
+            industry: 'Manufacturing',
+            link: 'dwdw',
+            sys: {
+              id: 'wdqdwq',
+            },
+            assetsCollection: {
+              items: [
+                {
+                  imagesCollection: {
+                    items: [
+                      {
+                        url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTtnvAOajH9gS4C30cRF7rD_voaTAKly2Ntaw&s',
+                      },
+                    ],
+                  },
+                  services: ['dwdw'],
+                  stack: ['dwdw'],
+                  testimonial: 'dwdw',
+                  body: 'dwdw',
+                },
+              ],
+            },
+          },
+          {
+            name: 'Path Robotics 2A',
+            industry: 'Manufacturing2',
+            link: 'dwdw',
+            sys: {
+              id: 'dq;ldmqw;ldqw',
+            },
+            assetsCollection: {
+              items: [
+                {
+                  imagesCollection: {
+                    items: [
+                      {
+                        url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTtnvAOajH9gS4C30cRF7rD_voaTAKly2Ntaw&s',
+                      },
+                    ],
+                  },
+                  services: ['dwdw'],
+                  stack: ['dwdw'],
+                  testimonial: 'dwdw',
+                  body: 'dwdw',
+                },
+              ],
+            },
+          },
+        ],
+      },
       id: 'home',
     },
     revalidate: 30,
